@@ -5,6 +5,7 @@
 # server
 
 # dependencies
+.server/dist
 .server/node_modules
 .server/node_modules/
 .server//.pnp

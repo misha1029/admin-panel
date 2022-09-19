@@ -3,7 +3,7 @@ import { IReview } from "./review.interface"
 export interface IMovie {
     id: number
     name: string
-    rating: number
+    rating: number | null // или число либо null
     poster: string
     views: number
     reviews?: IReview[]
