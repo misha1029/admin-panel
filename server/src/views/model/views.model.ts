@@ -13,6 +13,6 @@ export class ViewsModel extends Model<ViewsModel> {
 	@Column
 	movieId: number
 
-	@Column({ defaultValue: 0 })
+	@Column({ defaultValue: 1 })
 	views: number
 }

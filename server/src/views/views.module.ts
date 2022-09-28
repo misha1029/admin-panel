@@ -7,6 +7,6 @@ import { ViewsModel } from './model/views.model'
 @Module({
 	imports: [SequelizeModule.forFeature([ViewsModel])],
 	controllers: [ViewsController],
-	providers: [ViewsService],
+	providers: [ViewsService]
 })
 export class ViewsModule {}
