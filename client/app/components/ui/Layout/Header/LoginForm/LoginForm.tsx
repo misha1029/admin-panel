@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FaRegUserCircle } from 'react-icons/fa'
 
+
 import { useAuth } from '../../../../../hooks/useAuth'
 import { useOutside } from '../../../../../hooks/useOutside'
+import { AuthService } from '../../../../../services/auth/auth.service'
 import { FADE_IN, menuAnimation } from '../../../../../utils/animation/fade'
 import { Button } from '../../../Button/Button'
 import Field from '../../../Field/Field'
@@ -12,13 +14,10 @@ import { UserAvatar } from '../../../UserAvatar/UserAvatar'
 
 import styles from './LoginForm.module.scss'
 import { IAuthFields, validEmail } from './login-form.interface'
+import { useMutation } from '@tanstack/react-query'
 
 export const LoginForm: FC = () => {
 	const { ref, setIsShow, isShow } = useOutside(false)
-	 
-	React.useEffect (() => {
-		setIsShow(false)
-	}, [])
 
 	const [type, setType] = useState<'login' | 'register'>('login')
 
@@ -33,17 +32,35 @@ export const LoginForm: FC = () => {
 
 	const { user, setUser } = useAuth()
 
-	const onSubmit: SubmitHandler<IAuthFields> = () => {
-		if (type === 'login')
-			setUser({
-				id: 1,
-				email: 'test@gmail.com',
-				avatarPath: '/avatar.png',
-				name: 'Test Testovich',
-			})
+	const { mutate: loginSync } = useMutation(
+		['login'],
+		(data: IAuthFields) => AuthService.login(data.email, data.password), // делаем запрос на сервер получаем куки и сохраняем ЮЗЕРА в ЛОКАЛСТОРДЖ
 
-		reset()
-		setIsShow(false)
+		{
+			onSuccess(data) { // при саксесе обновляем состояние нашего контекста
+				if (setUser) setUser(data.user)
+				reset() // чистим поля у формы
+				setIsShow(false) // закрываем окошко
+			},
+		}
+	)
+
+	const { mutate: registerSync } = useMutation(
+		['register'],
+		(data: IAuthFields) => AuthService.login(data.email, data.password),
+
+		{
+			onSuccess(data) {
+				if (setUser) setUser(data.user)
+				reset() 
+				setIsShow(false)
+			},
+		}
+	)
+
+	const onSubmit: SubmitHandler<IAuthFields> = (data) => {
+		if (type === 'login') loginSync(data)
+		else if (type === 'register') registerSync(data)
 	}
 
 	return (
@@ -54,13 +71,14 @@ export const LoginForm: FC = () => {
 					link="/dashbord"
 					avatarPath={user.avatarPath || ''}
 				/>
+
 			) : (
 				<button onClick={() => setIsShow(!isShow)} className={styles.button}>
 					<FaRegUserCircle />
 				</button>
 			)}
 
-			<motion.div animate={isShow ? 'open' : 'closed'} variants={menuAnimation}>
+			<motion.div initial = {false} animate={isShow ? 'open' : 'closed'} variants={menuAnimation}>
 				<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 					<Field
 						{...register('email', {

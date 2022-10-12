@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.7.2",
+    "@types/react-query": "^1.2.9",
+    "axios": "^0.27.2",
     "classnames": "^2.3.2",
     "framer-motion": "^7.3.5",
+    "js-cookie": "^3.0.1",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -20,6 +24,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@types/js-cookie": "^3.0.2",
     "@types/node": "18.7.17",
     "@types/react": "18.0.19",
     "@types/react-dom": "18.0.6",

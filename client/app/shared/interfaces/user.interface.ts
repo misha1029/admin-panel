@@ -4,3 +4,7 @@ export interface IUser {
 	email: string
 	avatarPath: string
 }
+export interface IAuthResponse {
+	user: IUser
+	accessToken: string
+}

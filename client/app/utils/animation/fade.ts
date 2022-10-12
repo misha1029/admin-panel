@@ -9,7 +9,12 @@ export const FADE_IN: MotionProps = {
 
 export const menuAnimation: Variants = {
 	open: {
-
+		scaleZ: 1,
+		scaleY: 1,
+		scaleX: 1,
+		opacity: 1,
+		/* transition: { type: 'spring', stiffness: 110, damping: 9 },// 'just'
+        transition: { type: 'just'},
 	},
 	closed: {
 		scaleZ: 0.3,
