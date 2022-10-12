@@ -1,0 +1,6 @@
+.heading {
+	@apply text-xl text-black;
+}
+.catalog {
+	@apply flex flex-wrap gap-8;
+}

@@ -25,6 +25,7 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: '#5f3DF7',
+				black: '#111'
 			},
 			transitionTimingFunction: {
 				DEFAULT: 'ease-in-out',

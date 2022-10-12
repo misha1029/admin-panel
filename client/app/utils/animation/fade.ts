@@ -13,7 +13,7 @@ export const menuAnimation: Variants = {
 		scaleY: 1,
 		scaleX: 1,
 		opacity: 1,
-		/* transition: { type: 'spring', stiffness: 110, damping: 9 },// 'just'
+		/* transition: { type: 'spring', stiffness: 110, damping: 9 },// 'just' */
         transition: { type: 'just'},
 	},
 	closed: {

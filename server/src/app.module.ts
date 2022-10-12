@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module'
 import { ReviewModule } from './review/review.module'
 import { ViewsModule } from './views/views.module'
 import { MovieModule } from './movie/movie.module'
+import { FilesModule } from './files/files.module'
 
 @Module({
 	imports: [
@@ -21,6 +22,7 @@ import { MovieModule } from './movie/movie.module'
 		MovieModule,
 		ReviewModule,
 		ViewsModule,
+		FilesModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
