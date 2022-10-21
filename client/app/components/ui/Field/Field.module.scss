@@ -5,8 +5,8 @@
     @apply relative block mb-4 ;
     @include shadow();
 
-    >input {
-        @apply p-2 w-full text-base  rounded-md overflow-hidden 
+    > input {
+        @apply p-2 w-full text-xs  rounded-md overflow-hidden 
         block bg-white;
 
         &::placeholder {

@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 import '../app/assets/styles/globals.scss'
 import AuthProviders from '../app/providers/auth-providers/AuthProviders'
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			refetchOnWindowFocus: false,

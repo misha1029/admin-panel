@@ -6,7 +6,7 @@ export interface IMovie {
 	rating: number | null // или число либо null
 	poster: string
 	views: number
-	reviews?: IReview[]
+	review?: IReview[]
 	fees: number
 }
 
